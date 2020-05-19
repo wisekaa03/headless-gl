@@ -14,8 +14,8 @@ install:
   - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version) $env:PLATFORM
   - npm config set --global python 2.7
   - npm config set --global msvs_version 2015
-  - npm config set --global target_arch %PLATFORM%
-  - npm config set --global arch $(node -e 'console.log(process.arch)')
+  - npm config set --global target_arch $(node -e 'console.log(process.arch)')
+  #- npm config set --global arch $(node -e 'console.log(process.arch)')
   - npm install -g node-gyp
 
 build_script:
