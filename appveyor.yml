@@ -1,5 +1,6 @@
 platform:
   - x64
+  - x86
 
 environment:
   GITHUB_TOKEN:
@@ -11,8 +12,10 @@ environment:
 install:
   - cmd: git submodule update --init
   - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version) $env:PLATFORM
-  - npm config set msvs_version 2015 --global
-  - npm config set target_arch %PLATFORM% --global
+  - npm config set --global python 2.7
+  - npm config set --global msvs_version 2015
+  - npm config set --global target_arch %PLATFORM%
+  - npm config set --global arch $(node -e 'console.log(process.arch)')
   - npm install -g node-gyp
 
 build_script:
